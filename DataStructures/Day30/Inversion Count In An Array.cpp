@@ -2,6 +2,49 @@
 #include<vector>
 using namespace std;
 
+
+//Recurssion version
+/*unsigned int mod = 1000000007;
+int count_inversions(vector<int> &A, int s, int m, int e, int ans)
+{
+    int ptr1=s, ptr2=m+1, cnt=0;
+    vector<int> temp(e-s+1, 0);
+    while(ptr1<=m && ptr2<=e)
+    {
+        if(A[ptr1]>A[ptr2])
+        {
+            ans=(ans+(m-ptr1+1))%mod;
+            temp[cnt++]=A[ptr2++];
+        }
+        else
+            temp[cnt++]=A[ptr1++];
+    }
+    while(ptr1<=m)
+        temp[cnt++]=A[ptr1++];
+    while(ptr2<=e)
+        temp[cnt++]=A[ptr2++];
+    ptr1=s;
+    ptr2=m+1;
+    cnt=0;
+    for(int i=s;i<=e;i++)
+        A[i]=temp[cnt++];
+    return ans;
+}
+
+int DandC(vector<int>&A, int s, int e, int ans)
+{
+    if(s>=e)
+        return 0;
+    int m=(s+e)/2;
+    return (DandC(A,s,m,ans)+DandC(A,m+1,e,ans)+count_inversions(A,s,m,e,ans))%mod;
+}
+
+int Solution::solve(vector<int> &A) {
+    int ans=0;
+    return DandC(A,0,A.size()-1,ans);
+}*/
+//Recurssion Version End
+
 int ans=0;
 unsigned int mod = 1000000007;
 void count_inversions(vector<int> &A, int s, int m, int e)
